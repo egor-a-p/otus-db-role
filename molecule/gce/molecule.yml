@@ -6,7 +6,7 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: ansible-db-role-ci-test
+  - name: ansible-db-role-test
     zone: europe-west1-b
     machine_type: g1-small
     image: ubuntu-1604-xenial
