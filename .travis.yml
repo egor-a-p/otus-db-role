@@ -4,11 +4,11 @@ python:
 install:
 - pip install ansible==2.6.4 molecule apache-libcloud
 script:
-- molecule create --scenario-name gce
-- molecule converge --scenario-name gce
-- molecule verify --scenario-name gce
+- molecule --debug create --scenario-name gce
+- molecule --debug converge --scenario-name gce
+- molecule --debug verify --scenario-name gce
 after_script:
-- molecule destroy --scenario-name gce
+- molecule --debug destroy --scenario-name gce
 notifications:
   slack:
     secure: 5plFOSAh7l9km+uT/vkNmqiffEEDkCyddgFuyoQQLKUIHzGmE0v+sz3QTDxrI3iFIpsixUOL55RQrRIcETqqWX36mB6RQdmfkoDGcx+N5Ez5fUxbVsILgK+/E7Y4d4hEmXe3yc9aIyg3ltvX5pU0PnzejENBUoKWIkQLJZNjzkwFGGjKMnm/csPWhBg0RwdQko2szFOcgyk7Lp1K9/N6cWYE6LvygCdI20aeYwZniqMSCJQIeEBoJ/hlo/48gMlkvGEUS5o6KC8gi0Ccr8OtJHo6weGp/CUZjYlZaEWGXJZ7iiT/s2MSk8YXEOeppip78WKVIIQW8D3Gc/IqDahN6iwWwLgO1HUzcIUzyv328yiocwhzGfbKAp7YkE24pN/WmWr59B7gTi274df5V8pN52y1BD+4bRJFSP9AbUARqeUocusefDyVl4GzJoobu1LeD0O+Y1AZtmJ4GXjlp/YvGtwJV9pH5ihInDVUtPDMSJP2Qb4UkHU9anD/LHn6JG/B+/Fq6FJoA5hcQ9WtBGXFbsJHZJ8ZGqYJFdWYD5a6zdcYLPSphohMeo3FUVYtNL/WfNMUFFQjnqZywDEtr4po2bHuSMuBFN2fgnurWH3R10gRSRD/6ISSWYLPsdRbV4SrjmATYrN7Ud/AffUTj17IBmNgoMyQuIUc183YyZuVtw8=
@@ -18,8 +18,7 @@ env:
   - secure: at3wMS/8RoSAvWDQS+jr5CQB6ZzzKdeaJ3b5lVgiaAPpPll0GBDk5FzvbHbH4iHTKzIcAc/WYSoBwwTMHvZaqi5+VohmARRGNDcbVhjq0kt/UxQeEAt7aGfj+Qfj1LbeaQAxxe3O+peqks5k5GbBYcbmNRij2abY15T2EutdmEgbL2vrSbbVu9LKYamV+mJKcdZp6FBcjSTVmaKaWosQClgOP8ImrHi1FByxGKQrkiBswQkuYZhLbXKdzr0ydVbCelZFlVWvKDv82YSOvkRAft09WJwVay6yoTAkl6BEjYTVxuU0x+m5RiaQmw7eHlDapN9gM1qkar2dCPHIghNTe8vBtCdYqvcwO0HzKFyRkX4fO41a+teVjm9gzRCGIoYiNx4WXOHHSwACYfv+UKazALJG02+H/GNhEcjnBwuraxdO1RlCVZLFhzsR8mBDWfcm9G8WMk2CHz17PG8XsimvwesZ776CM+D23sTGkQkWEeo8/UjGBHN3sKl/ndzK5yGtYEEAmho+Q/RYiiOmW34HNOnUV2WGjCU4Qm73UYjGQQtA48tqIb4+Qk+ANY5Q2HYqJTImvdvR+oNkoMrSZgJ68Z0iL1FnsFqPl5ImwCTUq5eWmyRS2R28UNMBikLAk/ojFv1j9vLx+dJcu9GvhvmWZHEQr7fAjevrrQAVrtwtGuo=
   - secure: E/nlVXwM36uZ0qW+MbiHWskknDxHtgO+luhAla2Wo8h+1ChU+3xkiPEh4OzqKv4YG+1F9hFoCwfHrQS2WyB0Ot/cImK++mSKPnB5EXt7XsLIUbGi/0LDXCixC4H57cu/3VrbyikuE44g8WqBcZQ8FzfME/ACLWD9Z8AdtWHVzHyt5VeTbFe2rU0lu373iNsHxBQbocOvTwZkB8Ad5rigQMVZb8b4RlUWyUgEr0rGmtBQd0Xq0RT1fwe996qwSBstnRLZIerv4u1QG7YLKvi7XGQnVtQMqRb7+AVbOcUiDaaHUFJ9iaXYc9GvQCyKsRU043jRGOGZIyJ07JHZ9nwuQ4LbJVe5jJOYmbNai0zPKK7t9MoLj1T2T7ummL0JJBXJLAUHc0i2A/mnnEXILYfm8HtJjzDxmv3x0bxflG5tQDTRTic/UdI5/rwhpnIpBTbT1GPkDDtH6xbEYKe3RmMNTsZ0aQOKBNfKKi7Bk4132/v00TfF1cU7T/qEFJg70z/c1YQicHmAS9tp4T/Xo1aYZ/aEllK86E97PSRCTsZMfn6oqtidwlwy/tI/G/WzK8T0MBk0Gj73IhfKqr6Ng9GYSjFzLNE2XmOkCQhH0XSuKtPgvO3rUn6Y07RoJLDg8d0o2jS0WWus1+DgKf3q2zqMjchoooehLk27mvHCz5vbjaw=
 before_install:
-- openssl aes-256-cbc -K $encrypted_588c62e25c03_key -iv $encrypted_588c62e25c03_iv
-  -in secrets.tar.enc -out secrets.tar -d
+- openssl aes-256-cbc -K $encrypted_588c62e25c03_key -iv $encrypted_588c62e25c03_iv -in secrets.tar.enc -out secrets.tar -d
 - tar xvf secrets.tar
 - mv google_compute_engine /home/travis/.ssh/
 - chmod 0600 /home/travis/.ssh/google_compute_engine
