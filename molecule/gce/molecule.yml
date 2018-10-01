@@ -6,10 +6,10 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: instance
-    zone: us-west1-a
-    machine_type: f1-micro
-    image: debian-8
+  - name: ansible-db-role-ci-test
+    zone: europe-west1-b
+    machine_type: g1-small
+    image: ubuntu-1604-xenial
 provisioner:
   name: ansible
   lint:
