@@ -2,13 +2,14 @@ language: python
 python:
 - '3.6'
 install:
+- pip install pycrypto
 - pip install ansible==2.6.4 molecule apache-libcloud
 script:
-- molecule --debug create --scenario-name gce
-- molecule --debug converge --scenario-name gce
-- molecule --debug verify --scenario-name gce
+- molecule create --scenario-name gce
+- molecule converge --scenario-name gce
+- molecule verify --scenario-name gce
 after_script:
-- molecule --debug destroy --scenario-name gce
+- molecule destroy --scenario-name gce
 notifications:
   slack:
     secure: 5plFOSAh7l9km+uT/vkNmqiffEEDkCyddgFuyoQQLKUIHzGmE0v+sz3QTDxrI3iFIpsixUOL55RQrRIcETqqWX36mB6RQdmfkoDGcx+N5Ez5fUxbVsILgK+/E7Y4d4hEmXe3yc9aIyg3ltvX5pU0PnzejENBUoKWIkQLJZNjzkwFGGjKMnm/csPWhBg0RwdQko2szFOcgyk7Lp1K9/N6cWYE6LvygCdI20aeYwZniqMSCJQIeEBoJ/hlo/48gMlkvGEUS5o6KC8gi0Ccr8OtJHo6weGp/CUZjYlZaEWGXJZ7iiT/s2MSk8YXEOeppip78WKVIIQW8D3Gc/IqDahN6iwWwLgO1HUzcIUzyv328yiocwhzGfbKAp7YkE24pN/WmWr59B7gTi274df5V8pN52y1BD+4bRJFSP9AbUARqeUocusefDyVl4GzJoobu1LeD0O+Y1AZtmJ4GXjlp/YvGtwJV9pH5ihInDVUtPDMSJP2Qb4UkHU9anD/LHn6JG/B+/Fq6FJoA5hcQ9WtBGXFbsJHZJ8ZGqYJFdWYD5a6zdcYLPSphohMeo3FUVYtNL/WfNMUFFQjnqZywDEtr4po2bHuSMuBFN2fgnurWH3R10gRSRD/6ISSWYLPsdRbV4SrjmATYrN7Ud/AffUTj17IBmNgoMyQuIUc183YyZuVtw8=
@@ -25,4 +26,3 @@ before_install:
 - tar xvf secrets.tar
 - mv google_compute_engine /home/travis/.ssh/
 - chmod 0600 /home/travis/.ssh/google_compute_engine
-- pip install pycrypto
