@@ -30,5 +30,5 @@ vault.key
 ###Secrets
 google_compute_engine
 google_compute_engine.pub
-iconic-rampart-206317-e901335a4f6e.json
 secrets.tar
+credentials.json
