@@ -4,7 +4,7 @@ python:
 install:
 - pip install ansible==2.6.4 molecule apache-libcloud
 script:
-- molecule create --debug --scenario-name gce
+- molecule create --scenario-name gce
 - molecule converge --scenario-name gce
 - molecule verify --scenario-name gce
 after_script:
